@@ -3,7 +3,8 @@ Windows Installer for MySQL
 ===========================
 
 Prerequisites
--------------
+=============
+
 Before beginning the MySQL installation, please ensure that you have the following already installed on the Windows machine.
 
 * MySQL Installer requires Microsoft .NET Framework 4.5.2 or later.
@@ -14,7 +15,8 @@ Before beginning the MySQL installation, please ensure that you have the followi
 	`<https://www.microsoft.com/en-us/download/details.aspx?id=5555>`_.
 
 Windows MySQL Installer
------------------------
+=======================
+
 After the above prerequisites have been installed, download the Community version installer from `<https://dev.mysql.com/downloads/installer/>`_.
 
 	* Ensure that Microsoft Windows is selected in the dropdown as the operating system.
@@ -23,14 +25,14 @@ After the above prerequisites have been installed, download the Community versio
 	* Double click the .msi file downloaded to begin the installation
 
 Setup Type
-----------
+==========
 
 During the initial setup, you are prompted to select the MySQL products to be installed on the host. One alternative is to use a predetermined setup type that matches your setup requirements. Choosing one of the setup types determines the initial installation only and does not limit your ability to install or update MySQL products for Windows later.
 
 To ensure you have the server, the workbench and the example databases, choose the full install.
 
 Check Requirements
-------------------
+==================
 
 MySQL Installer uses entries in the package-rules.xml file to determine whether the prerequisite software for each product is installed on the host. If and when the requirements check fails, MySQL Installer displays the Check Requirements step to help you update the host. The following figure identifies and describes the key areas of this step.
 
@@ -40,7 +42,7 @@ MySQL Installer uses entries in the package-rules.xml file to determine whether 
 You should not see the workbench in the list above and hence you can click "Next"
 
 Verify Installation
--------------------
+===================
 
 Once the installation is complete, verify the installation and access to the example database "world"
 
@@ -52,14 +54,15 @@ Once the installation is complete, verify the installation and access to the exa
 	* Close the Workbench
 
 Enable Replication
-------------------
+==================
 
 To enable replication we need to ensure replication is enabled in My SQL. This is done in two steps
 
 	* Enable Binary Logging
 	* Add a User with Replication Privillages
 	
-**Enable Binary Logging**
+Enable Binary Logging
+=====================
 
 Open the file C:\ProgramData\MySQL\MySQL Server 5.7\my.cfg in a text editor like notepad++
 Look for the [mysqld] section.
@@ -74,7 +77,7 @@ Add the following lines under the tag [mysqlld]
 	server_id=1
 
 Add New User
-------------
+============
 
 Next we will add a new user. The username can be anything you want. We will use the name "peppermint" to describe the process
 
@@ -113,7 +116,7 @@ Next we will add a new user. The username can be anything you want. We will use 
 |
 
 Find IP Address
----------------
+===============
 
 To find the IP address assigned to the machine by the router, follow the following steps:
 Open a command prompt by going to Start -> Windows System --> Command Prompt
@@ -143,19 +146,18 @@ The entry could look like
 Save this IP address. This is the IP address with which you will ask peppermint to connect to the MySQL database
 
 Verify MySQL Connectivity
--------------------------
+=========================
 
 To verify the connectivity, login to Peppermint and go to the Databases section.
-Click "New Database" button
+Click the "New Database" button
 
 .. image:: images/Peppermint1.png
 	:scale: 100%
 
-|
 Use the following details to add the "world" example database on our MySQL database that we just installed.
 
 +-----------------+----------------------------------------------------------------+
-| DatabaseName    | world                                                          |
+| DatabaseName    | Choose a name e.g. MySQL_Windows                               |
 +-----------------+----------------------------------------------------------------+
 | HostName        | The IP address above e.g. 192.168.0.13                         |
 +-----------------+----------------------------------------------------------------+

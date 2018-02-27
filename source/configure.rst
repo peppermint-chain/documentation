@@ -41,7 +41,7 @@ You should see the list of configure databases in the system.
 	
 To add a new database click on the **New Database** button. This should bring up the ** Add Database ** popup.
 
-.. image:: images/new_db2.png
+.. image:: images/new_db.png
 	:scale: 90%
 	
 
@@ -51,16 +51,18 @@ Enter the following.
    
 2. **Host Name:** Enter the hostname/ipaddress for MySQL. Due to the way docker works **localhost** is not a valid option. 
    If your **MySQL** server runs on the same machine, **please enter the external ip-address of the host.** 
+   A quick way to find your external IP address was covered in the Setup Sample MySQL sections. For more details see `Find IP Address <setup_mysql_win.html#find-ip-address>`_.
 
-3. **Port no:** The **MySQL** port no. The default is **3306**.
+3. **Port no:** The **MySQL** port no. The default is **3306** which we have used in the example windows MySQL installation. 
+   The example docker MySQL installation uses the port **7706**.
 
-4. **Schema:** The **MySQL** database/schema which contains the tables you want to make Tamper-Proof.
+4. **Schema:** The **MySQL** database/schema which contains the tables you want to make Tamper-Proof. Our examples use the schema **"world"**.
 
 5. **User Id:** The user id you would like the Data-Vault to use to connect. Please ensure that this user-id has the 
-   ** REPLICATION_CLIENT & REPLICATION_SLAVE ** privileges.
+   ** REPLICATION_CLIENT & REPLICATION_SLAVE ** privileges. Our example databases use the user **"peppermint"**.
   
-6. **Password:** The password for the user-id specified. Currently in the alpha version this is stored in clear-text but
-   that will be fixed by the Beta version.
+6. **Password:** The password for the user-id specified. Our example databases use the password **"peppermint"**.
+   Currently in the alpha version this is stored in clear-text but we will make the password secured by the Beta version.
 
 
 Click **Add** to add the database.

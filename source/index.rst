@@ -11,8 +11,8 @@ Welcome to Data-Vault's documentation!
 	:caption: Contents:
 
 	intro
-	setup_mysql
 	setup_dv
+	setup_mysql
 	configure
 	verify_replication
 

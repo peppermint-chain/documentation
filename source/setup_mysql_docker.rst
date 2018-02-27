@@ -1,98 +1,124 @@
 ============
 Docker MySQL
 ============
+
+Prerequisites
+=============
+Before beginning the MySQL installation, please decide on a directory where the MySQL data and configuration files will reside.
+For this exercise, lets use the directory c:\mysql.
+
+
+Docker MySQL Installer
+======================
 We will be using the MySQL Docker image from `<https://hub.docker.com/_/mysql/>`_
 
+To begin installing, open the command prompt by going to Start -> Windows System --> Command Prompt
+You can also open the command prompt by running the command (CTRL-R) "cmd"
+
+Once the black command prompt window is open, give the following commands one after another in sequence to:
+
+	* Create the mysql directories
+	* Create a configuration file
+	* Install MySQL and Start the docker Instance for MySQL
+
+We use the password **"test123"** but you can use a different password and replace the password in the last line below
+
+.. code-block:: bash
+
+	> mkdir c:\mysql && mkdir c:\mysql\conf && mkdir c:\mysql\data
+	> (echo [mysqld] && echo log_bin=mysql-bin && echo server_id=1) > ./mysql.cnf
+	> docker run --name testmysql -v C:\mysql\data:/var/lib/mysql -v C:\mysql\conf:/etc/mysql/conf.d -p 7706:7706 -e MYSQL_ROOT_PASSWORD=**test123** -d mysql:5.7
+
+
 Configuration of MySQL 
-=======================
-Since the Data-Vault needs to replicate data from MySQL, the MySQL Server needs to be setup for **Replication**.
-In order to do this we need to 
+======================
+Since the Data-Vault needs to replicate data from MySQL, the MySQL Server should be setup for **Replication**.
+In order to do this we will use a script to create an example database and create appropriate users with appropriate privileges
 
-Download
-============
-The Data-Vault is distributed as docker image on **Docker Hub** with the tag :code:`peppermint-chain/data-vault`.
+Download The Data Files
+-----------------------
 
-To download **Data-Vault** the command is 
+Download the docker_world_dump.sql file from 
 
-.. code-block:: bash
+**http://peppermintchain.com/mysql/docker/docker_world_dump.sql**
 
-	> docker pull peppermintchain/data-vault
-	
-create database employees;
-create user 'emp'@'%' identified by 'emp';
-grant ALL privileges on employees.* to 'emp'@'%';
-grant REPLICATION CLIENT on *.* to 'emp'@'%';
-grant REPLICATION SLAVE on *.* to 'emp'@'%';
+and save the file in the
 
+**C:\\mysql\\conf**
 
+directory that we created above
 
-Run
-=======
-The Data-Vault docker image needs two mandatory arguments to be passed when being started. 
+Setup Your MySQL
+----------------
 
-State
-------
-The Data-Vault docker image is designed to use the host file-system to save its state. 
-Therefore it needs some arguments to be passed to the docker command to mount a local directory/folder into
-the docker image.
-
-Ports
-------
-The Data-Vault also exposes its UI using an embedded HTTP server. The port for this HTTP server needs to be 
-proxied to the docker host before it can be accessed.
-
-
-Syntax
--------
+Run the following commands on the command prompt window one after another in a sequence to create the schema, import the example data and create the user "peppermint"
 
 .. code-block:: bash
 
-	> docker run -v <data-directory-on-host>:/usr/local/peppermint-chain/data \
-		-p <host-port>:25000 -d peppermintchain/data-vault
+	> docker exec -it testmysql bash
+	> mysql -u root -ptest123 < /etc/mysql/conf.d/docker_world_dump.sql
 
-		<data-directory-on-host>: This is the full path to the directory on the host 
-				where you want the data-vault to save its state.
-		<host-port>: This is the port no on the host where you want to access the 
-				Data-Vault's UI.
+For simplicity, we kept the password for the user peppermint as peppermint. Please feel free to change it.	
 
-A typical command to start the Data-Vault would look like
 
-.. code-block:: bash
-
-	> docker run -v /home/pramod/data-vault:/usr/local/peppermint-chain/data \
-		-p 25000:25000 -d peppermintchain/data-vault
-	
-
-When run with the above command
-
-	1. The Data-Vault will save its state under :code:`/home/pramod/data-vault`.
-	2. The UI will be accessible on port :code:`25000`.
-
-Verify Install
+Find IP Address
 ===============
-Once the docker container has been started. Navigate to the URL 
 
-`<http://localhost:25000/datavault/st/index.html>`_.
+To find the IP address assigned to the machine by the router, follow the following steps:
+Open a command prompt by going to Start -> Windows System --> Command Prompt
+You can also start it by running the command (CTRL-R) "cmd"
+Once the black command prompt window is open, give the following command
 
-You should see the **Login** screen.
+.. code-block:: bash
 
-Login
---------
+	> ipconfig
+	
 
-.. image:: images/login.png
-	:scale: 90%
+.. image:: images/ipconfig1.png
+	:scale: 100%
+	
+Look for the entry under the internet connectivity being used e.g. Wireless LAN adapter Wi-Fi:
+The entry could look like
 
-In the alpha version there is no Authentication. Just login with any User Id.
+.. code-block:: bash
 
-Dashboard
-----------
-Once you login, you should see the main Dashboard
-
-.. image:: images/dashboard.png
-	:scale: 90%
+	> IPv4 Address. . . . . . . . . . . : 192.168.0.13
 
 
-The Dashboard gives a high level view of the current state of the Data-Vault.
-When you first login, it should look like the image above.
+.. image:: images/ipconfig2.png
+	:scale: 100%
+	
+	
+Save this IP address. This is the IP address with which you will ask peppermint to connect to the MySQL database
 
-If you are able to see the Dashboard, you are good to go !
+Verify MySQL Connectivity
+=========================
+
+To verify the connectivity, login to Peppermint and go to the Databases section.
+Click the "New Database" button
+
+.. image:: images/Peppermint1.png
+	:scale: 100%
+
+Use the following details to add the "world" example database on our MySQL database that we just installed.
+
++-----------------+----------------------------------------------------------------+
+| DatabaseName    | Choose a name e.g. MySQL_Docker                                |
++-----------------+----------------------------------------------------------------+
+| HostName        | The IP address above e.g. 192.168.0.13                         |
++-----------------+----------------------------------------------------------------+
+| PortNo          | 7706                                                           |
++-----------------+----------------------------------------------------------------+
+| Schema          | world                                                          |
++-----------------+----------------------------------------------------------------+
+| UserId          | peppermint                                                     |
++-----------------+----------------------------------------------------------------+
+| Password        | The password you setup during the "Add New User" section above |
++-----------------+----------------------------------------------------------------+
+
+.. image:: images/Peppermint3.png
+	:scale: 100%
+
+|
+
+This will connect to the database and that verifies the MySQL installation and connectivity to Peppermint.
