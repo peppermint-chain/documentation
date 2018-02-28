@@ -10,7 +10,7 @@ For this exercise, lets use the directory c:\mysql.
 
 Docker MySQL Installer
 ======================
-We will be using the MySQL Docker image from `<https://hub.docker.com/_/mysql/>`_
+We will be using the published MySQL Docker image from https://hub.docker.com/_/mysql/
 
 To begin installing, open the command prompt by going to Start -> Windows System --> Command Prompt
 You can also open the command prompt by running the command (CTRL-R) "cmd"
@@ -38,11 +38,7 @@ In order to do this we will use a script to create an example database and creat
 Download The Data Files
 -----------------------
 
-Download the docker_world_dump.sql file from 
-
-**http://peppermintchain.com/_images/docker_world_dump.sql**
-
-and save the file in the
+Download the docker_world_dump.sql file from `here <http://peppermintchain.com/_images/docker_world_dump.sql>`_ and save the file in the
 
 **C:\\mysql\\conf**
 
