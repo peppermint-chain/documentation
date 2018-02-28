@@ -98,7 +98,7 @@ Verify MySQL Connectivity
 To verify the connectivity, login to Peppermint and go to the Databases section.
 Click the "New Database" button
 
-.. image:: images/Peppermint1.png
+.. image:: images/peppermint1.png
 	:scale: 100%
 
 Use the following details to add the "world" example database on our MySQL database that we just installed.
@@ -117,7 +117,7 @@ Use the following details to add the "world" example database on our MySQL datab
 | Password        | "peppermint123" or the password you setup for the peppermint user |
 +-----------------+-------------------------------------------------------------------+
 
-.. image:: images/Peppermint3.png
+.. image:: images/peppermint3.png
 	:scale: 100%
 
 |
