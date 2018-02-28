@@ -40,7 +40,7 @@ Download The Data Files
 
 Download the docker_world_dump.sql file from 
 
-**http://peppermintchain.com/mysql/docker/docker_world_dump.sql**
+**http://peppermintchain.com/_images/docker_world_dump.sql**
 
 and save the file in the
 
@@ -58,16 +58,17 @@ Run the following commands on the command prompt window one after another in a s
 	> docker exec -it testmysql bash
 	> mysql -u root -ptest123 < /etc/mysql/conf.d/docker_world_dump.sql
 
-For simplicity, we kept the password for the user peppermint as peppermint. Please feel free to change it.	
+For simplicity, we kept the password for the user peppermint as "peppermint123" in the above script. Please feel free to change it.	
 
 
 Find IP Address
 ===============
 
 To find the IP address assigned to the machine by the router, follow the following steps:
-Open a command prompt by going to Start -> Windows System --> Command Prompt
-You can also start it by running the command (CTRL-R) "cmd"
-Once the black command prompt window is open, give the following command
+
+	- Open a command prompt by going to Start -> Windows System --> Command Prompt
+	- You can also start it by running the command (CTRL-R) "cmd"
+	- Once the black command prompt window is open, give the following command
 
 .. code-block:: bash
 
@@ -102,19 +103,19 @@ Click the "New Database" button
 
 Use the following details to add the "world" example database on our MySQL database that we just installed.
 
-+-----------------+----------------------------------------------------------------+
-| DatabaseName    | Choose a name e.g. MySQL_Docker                                |
-+-----------------+----------------------------------------------------------------+
-| HostName        | The IP address above e.g. 192.168.0.13                         |
-+-----------------+----------------------------------------------------------------+
-| PortNo          | 7706                                                           |
-+-----------------+----------------------------------------------------------------+
-| Schema          | world                                                          |
-+-----------------+----------------------------------------------------------------+
-| UserId          | peppermint                                                     |
-+-----------------+----------------------------------------------------------------+
-| Password        | The password you setup during the "Add New User" section above |
-+-----------------+----------------------------------------------------------------+
++-----------------+-------------------------------------------------------------------+
+| DatabaseName    | Choose a name e.g. MySQL_Docker                                   |
++-----------------+-------------------------------------------------------------------+
+| HostName        | The IP address above e.g. 192.168.0.13                            |
++-----------------+-------------------------------------------------------------------+
+| PortNo          | 7706                                                              |
++-----------------+-------------------------------------------------------------------+
+| Schema          | world                                                             |
++-----------------+-------------------------------------------------------------------+
+| UserId          | peppermint                                                        |
++-----------------+-------------------------------------------------------------------+
+| Password        | "peppermint123" or the password you setup for the peppermint user |
++-----------------+-------------------------------------------------------------------+
 
 .. image:: images/Peppermint3.png
 	:scale: 100%

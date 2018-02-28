@@ -91,7 +91,7 @@ Next we will add a new user. The username can be anything you want. We will use 
 
 	- In the Navigator Section on the left panel, under MANAGEMENT - select "Users and Privillages"
 	- Click "Add Account" button.
-	- Add the user peppermint with the default authentication type "Standard" and set a password for this user.
+	- Add the user peppermint with the default authentication type "Standard" and set a password for this user e.g. "peppermint123"
 
 .. image:: images/Workbench2.png
 	:scale: 100%
@@ -119,9 +119,10 @@ Find IP Address
 ===============
 
 To find the IP address assigned to the machine by the router, follow the following steps:
-Open a command prompt by going to Start -> Windows System --> Command Prompt
-You can also start it by running the command (CTRL-R) "cmd"
-Once the black command prompt window is open, give the following command
+
+	- Open a command prompt by going to Start -> Windows System --> Command Prompt
+	- You can also start it by running the command (CTRL-R) "cmd"
+	- Once the black command prompt window is open, give the following command
 
 .. code-block:: bash
 
@@ -156,19 +157,19 @@ Click the "New Database" button
 
 Use the following details to add the "world" example database on our MySQL database that we just installed.
 
-+-----------------+----------------------------------------------------------------+
-| DatabaseName    | Choose a name e.g. MySQL_Windows                               |
-+-----------------+----------------------------------------------------------------+
-| HostName        | The IP address above e.g. 192.168.0.13                         |
-+-----------------+----------------------------------------------------------------+
-| PortNo          | 3306                                                           |
-+-----------------+----------------------------------------------------------------+
-| Schema          | world                                                          |
-+-----------------+----------------------------------------------------------------+
-| UserId          | peppermint                                                     |
-+-----------------+----------------------------------------------------------------+
-| Password        | The password you setup during the "Add New User" section above |
-+-----------------+----------------------------------------------------------------+
++-----------------+---------------------------------------------------------------------------------+
+| DatabaseName    | Choose a name e.g. MySQL_Windows                                                |
++-----------------+---------------------------------------------------------------------------------+
+| HostName        | The IP address above e.g. 192.168.0.13                                          |
++-----------------+---------------------------------------------------------------------------------+
+| PortNo          | 3306                                                                            |
++-----------------+---------------------------------------------------------------------------------+
+| Schema          | world                                                                           |
++-----------------+---------------------------------------------------------------------------------+
+| UserId          | peppermint                                                                      |
++-----------------+---------------------------------------------------------------------------------+
+| Password        | peppermint123 or the password you setup during the "Add New User" section above |
++-----------------+---------------------------------------------------------------------------------+
 
 .. image:: images/Peppermint2.png
 	:scale: 100%
