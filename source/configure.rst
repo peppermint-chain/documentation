@@ -92,6 +92,6 @@ It might take a little while for the popup to disappear depending on how many ro
 
 Once Data-Vault has copied the data you should be able to see the table configured under the database as shown below.
 
-.. image:: images/db_details_with_dept.png
+.. image:: images/db_details_with_city.png
 	:scale: 90%
-	
+
